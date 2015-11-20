@@ -74,8 +74,13 @@
 
         <!-- Logo -->
         <div class="logo logo-sticky">
-          <!-- <a href="index.html"><img src="images/logo.png" alt="Stability"></a> -->
-          <h1><a href="<?php print $front_page; ?>"><?php print $site_name; ?></a></h1>
+
+          <?php if($logo): ?>
+            <a href="<?php print $front_page; ?>"><img src="<?php print $logo; ?>" alt="<?php print $site_name; ?>"></a>
+          <?php else: ?>
+            <h1><a href="<?php print $front_page; ?>"><?php print $site_name; ?></a></h1>
+          <?php endif; ?>
+
           <p class="tagline"><?php print $site_slogan; ?></p>
         </div>
         <!-- Logo / End -->
@@ -112,22 +117,22 @@
           <div class="text-center">
             <ul class="social-links social-links__dark">
               <?php if (theme_get_setting('social_links_facebook_enabled')): ?>
-                <li><a href="http://<?php print theme_get_setting('social_links_facebook_link'); ?>" ><i class="fa fa-facebook"></i></a></li>
+                <li><a href="//<?php print theme_get_setting('social_links_facebook_link'); ?>" ><i class="fa fa-facebook"></i></a></li>
               <?php endif; ?>
               <?php if (theme_get_setting('social_links_twitter_enabled')): ?>
-                <li><a href="http://<?php print theme_get_setting('social_links_twitter_link'); ?>"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="//<?php print theme_get_setting('social_links_twitter_link'); ?>"><i class="fa fa-twitter"></i></a></li>
               <?php endif; ?>          
               <?php if (theme_get_setting('social_links_instagram_enabled')): ?>
-                <li><a href="http://<?php print theme_get_setting('social_links_instagram_link'); ?>"><i class="fa fa-instagram"></i></a></li>
+                <li><a href="//<?php print theme_get_setting('social_links_instagram_link'); ?>"><i class="fa fa-instagram"></i></a></li>
               <?php endif; ?>          
               <?php if (theme_get_setting('social_links_linkedin_enabled')): ?>
-                <li><a href="http://<?php print theme_get_setting('social_links_linkedin_link'); ?>"><i class="fa fa-linkedin"></i></a></li>
+                <li><a href="//<?php print theme_get_setting('social_links_linkedin_link'); ?>"><i class="fa fa-linkedin"></i></a></li>
               <?php endif; ?>
               <?php if (theme_get_setting('social_links_xing_enabled')): ?>
-                <li><a href="http://<?php print theme_get_setting('social_links_xing_link'); ?>"><i class="fa fa-xing"></i></a></li>
+                <li><a href="//<?php print theme_get_setting('social_links_xing_link'); ?>"><i class="fa fa-xing"></i></a></li>
               <?php endif; ?>
               <?php if (theme_get_setting('social_links_rss_enabled')): ?>
-                <li><a href="http://<?php print theme_get_setting('social_links_rss_link'); ?>" ><i class="fa fa-rss"></i></a></li>
+                <li><a href="//<?php print theme_get_setting('social_links_rss_link'); ?>" ><i class="fa fa-rss"></i></a></li>
               <?php endif; ?>
             </ul>
             <?php print t('Copyright') . ' &copy; '. date('Y'); ?>  <a href="#"><?php print strtoupper(variable_get('site_name', 'STABILITY')); ?></a> &nbsp;| &nbsp; <?php print t('All Rights Reserved'); ?>

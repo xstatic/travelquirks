@@ -44,6 +44,10 @@ Tags: black, blog, bold, bootstrap, business, grid, portfolio, post formats, pos
 // #General
 // --------------------------------------------------
 */
+.container-fluid > .row > .col-md-12 {
+  padding-left: 0;
+  padding-right: 0;
+}
 html {
   overflow-x: hidden;
   overflow-y: auto;
@@ -610,21 +614,6 @@ body.boxed .header-main {
     margin-left: 100%;
     top: 0;
   }
-  .flexnav > li ul.open {
-    display: block;
-    opacity: 1;
-    filter: alpha(opacity=100);
-    visibility: visible;
-    z-index: 1;
-  }
-  .flexnav > li ul.open li {
-    overflow: visible;
-    max-height: 100px;
-  }
-  .flexnav > li ul.open ul.open {
-    margin-left: 100%;
-    top: 0;
-  }
   .touch-button {
     display: none;
   }
@@ -1016,6 +1005,7 @@ header.header-fixed {
 .nd-region {
   padding-top: 64px;
   padding-bottom: 64px;
+  position: relative;
 }
 .no-padding{
   padding: 0;
@@ -1033,7 +1023,7 @@ header.header-fixed {
   padding-bottom: 64px;
 }
 /* One Page section */
-section.dark {
+.section.dark {
   background: #2f2f2f;
   color: #a3a3a3;
 }
@@ -1053,22 +1043,43 @@ section.dark {
 .top-padding{
   padding-top: 80px;
 }
-section.dark h1,
-section.dark .h1,
-section.dark h2,
-section.dark .h2,
-section.dark h3,
-section.dark .h3,
-section.dark h4,
-section.dark .h4,
-section.dark h5,
-section.dark .h5,
-section.dark h6,
-section.dark .h6 {
+.section.dark h1,
+.section.dark .h1,
+.section.dark h2,
+.section.dark .h2,
+.section.dark h3,
+.section.dark .h3,
+.section.dark h4,
+.section.dark .h4,
+.section.dark h5,
+.section.dark .h5,
+.section.dark h6,
+.section.dark .h6 {
   color: #fff;
 }
-section.dark label {
+.section.primary .title-decorated:before,
+.section.primary .title-decorated:after {
+  background: #fff;
+}
+.section.primary .title-decorated h1:before {
+  background: #fff;
+}
+.section.primary .title-decorated h1 > span {
+  color: #fff;
+}
+.section.primary .circliful {
+  color: #fff;
+}
+.section.primary .circliful .fa {
+  color: #2f2f2f;
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+}
+.section.dark label {
   color: #a3a3a3;
+}
+.section.primary {
+  background: #dc2a0b;
 }
 .section.section__nopadding {
   padding: 0;
@@ -1086,6 +1097,7 @@ section.dark label {
   -webkit-background-size: cover;
   background-size: cover;
   position: relative;
+  background-attachment: fixed;
 }
 @media (min-width: 992px) {
   .featured-section {
@@ -1110,6 +1122,9 @@ h2 + .featured-section {
   background: #000;
   opacity: 0.55;
   filter: alpha(opacity=55.00000000000001);
+}
+.featured-section .circliful {
+  color: #fff;
 }
 .featured-item {
   height: 300px;
@@ -2578,6 +2593,154 @@ aside .tagcloud a:hover {
 .portfolio-sidebar-bottom .project-feed {
   margin-bottom: 0;
 }
+/* Common style */
+.project-item figure.effect-winston {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  cursor: pointer;
+}
+.project-item figure.effect-winston img {
+  position: relative;
+  display: block;
+  height: auto;
+  max-width: 100%;
+  opacity: 0.55;
+  filter: alpha(opacity=55.00000000000001);
+}
+.project-item figure.effect-winston figcaption {
+  padding: 2em;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 1.25em;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.project-item figure.effect-winston figcaption::before,
+.project-item figure.effect-winston figcaption::after {
+  pointer-events: none;
+}
+.project-item figure.effect-winston figcaption,
+.project-item figure.effect-winston figcaption > a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.project-item figure.effect-winston p {
+  margin-bottom: 0;
+}
+/* Anchor will cover the whole item by default */
+/* For some effects it will show as a button */
+.project-item figure.effect-winston figcaption > a {
+  z-index: 1000;
+  text-indent: 200%;
+  white-space: nowrap;
+  font-size: 0;
+  opacity: 0;
+}
+figure.effect-winston {
+  background: #2f2f2f;
+  text-align: left;
+}
+figure.effect-winston img {
+  -webkit-transition: opacity 0.45s;
+  transition: opacity 0.45s;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+figure.effect-winston figcaption::before {
+  position: absolute;
+  width: 100%;
+  height: 60px;
+  bottom: 0;
+  left: 0;
+  content: '';
+}
+@media (min-width: 992px) {
+  figure.effect-winston figcaption::before {
+    bottom: auto;
+    top: 40px;
+    left: -20px;
+    height: 100%;
+    background: url(../images/triangle.svg) no-repeat center center;
+    background-size: 100% 100%;
+    -webkit-transition: opacity 0.45s, -webkit-transform 0.45s;
+    transition: opacity 0.45s, transform 0.45s;
+    -webkit-transform: rotate3d(0, 0, 1, 45deg);
+    transform: rotate3d(0, 0, 1, 45deg);
+    -webkit-transform-origin: 0 100%;
+    transform-origin: 0 100%;
+  }
+}
+figure.effect-winston h2 {
+  -webkit-transition: -webkit-transform 0.35s;
+  transition: transform 0.35s;
+  -webkit-transform: translate3d(0, 20px, 0);
+  transform: translate3d(0, 20px, 0);
+  color: #fff;
+}
+figure.effect-winston p {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding: 0 1.5em 20px 0;
+}
+figure.effect-winston a {
+  margin: 0 3px;
+  color: #2f2f2f;
+  opacity: 0.7;
+  filter: alpha(opacity=70);
+}
+figure.effect-winston a:hover,
+figure.effect-winston a:focus {
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+figure.effect-winston p a i {
+  opacity: 0;
+  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s;
+  -webkit-transform: translate3d(0, 50px, 0);
+  transform: translate3d(0, 50px, 0);
+}
+figure.effect-winston:hover img {
+  opacity: 0.6;
+}
+figure.effect-winston:hover h2 {
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+@media (max-width: 991px) {
+  figure.effect-winston:hover figcaption::before {
+    background: rgba(255, 255, 255, 0.3);
+  }
+}
+@media (min-width: 992px) {
+  figure.effect-winston:hover figcaption::before {
+    opacity: 0.7;
+    -webkit-transform: rotate3d(0, 0, 1, 20deg);
+    transform: rotate3d(0, 0, 1, 20deg);
+  }
+}
+figure.effect-winston:hover p i {
+  opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+figure.effect-winston:hover p a:nth-child(3) i {
+  -webkit-transition-delay: 0.05s;
+  transition-delay: 0.05s;
+}
+figure.effect-winston:hover p a:nth-child(2) i {
+  -webkit-transition-delay: 0.1s;
+  transition-delay: 0.1s;
+}
+figure.effect-winston:hover p a:first-child i {
+  -webkit-transition-delay: 0.15s;
+  transition-delay: 0.15s;
+}
 /* Portfolio Timeline */
 .portfolio-timeline {
   padding-left: 0;
@@ -2677,6 +2840,101 @@ aside .tagcloud a:hover {
 }
 .portfolio-timeline .project-item .project-footer > ul {
   margin-bottom: 24px;
+}
+.partners__logos {
+  list-style: none;
+  margin: 0;
+}
+.partners__logos > li {
+  float: left;
+  width: 20%;
+  padding: 0;
+}
+.partners__logos > li > a {
+  margin: 0 2px 4px 2px;
+  display: block;
+  padding: 20px;
+  border-radius: 6px;
+  background: #fafafa;
+}
+.partners__logos > li > a:hover img {
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+.partners__logos > li img {
+  max-width: 100%;
+  height: auto;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+}
+/*
+// #Social Links Section
+// --------------------------------------------------
+*/
+.social-links-section {
+  padding: 35px;
+}
+.social-links-section.social-links-section__white {
+  background: #fff;
+}
+.social-links-section.social-links-section__grey {
+  background: #b7b7b7;
+}
+.social-links-section.social-links-section__dark {
+  background: #444;
+  color: #fff;
+}
+.social-links-section.social-links-section__dark .fa {
+  background: #fafafa;
+}
+.social-links-section.social-links-section__dark h5 {
+  color: #a3a3a3;
+}
+.social-links-section.social-links-section__dark a {
+  color: #2f2f2f;
+}
+.social-links-section.social-links-section__dark a:hover h5 {
+  color: #fff;
+}
+.social-links-section ul {
+  padding-left: 0;
+  list-style: none;
+  margin: 0;
+  text-align: center;
+}
+.social-links-section ul > li {
+  display: inline-block;
+  margin: 0;
+  padding: 0 25px;
+}
+.social-links-section ul > li a {
+  display: block;
+  -webkit-transition: 0.15s;
+  transition: 0.15s;
+}
+.social-links-section ul > li .fa {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+  text-align: center;
+  margin-right: 6px;
+  -webkit-transition: 0.15s;
+  transition: 0.15s;
+}
+.social-links-section ul > li h5 {
+  display: inline-block;
+  margin-bottom: 0;
+  padding-top: 5px;
+  line-height: 32px;
+  vertical-align: middle;
+  letter-spacing: .3em;
+  font-size: 11px;
+}
+.social-links-section.icons-rounded .fa {
+  border-radius: 50%;
 }
 /*
 // #Footer
@@ -3977,6 +4235,10 @@ fieldset.collapsed legend:before{
 .checkbox.webform-grid-option{
   display: table-cell;
 }
+input[type="radio"], input[type="checkbox"]{
+  margin-left: 0 !important;
+}
+
 /* Magazine Layout */
 .owl-carousel__posts .project-item .project-desc {
   text-align: left;
@@ -4095,4 +4357,60 @@ fieldset.collapsed legend:before{
 }
 .item-sm.item-sm-alt .item-desc h2 {
   font-size: 14px;
+}
+
+/* Shortcodes Background */
+.background-fullwidth{
+  margin-left: -100%;
+  margin-right: -100%;
+  padding-left: 100%;
+  padding-right: 100%;
+  overflow: hidden;
+}
+.bg-gray{
+  background: #444;
+  color: #fff;
+}
+.bg-dark-gray{
+  background: #2f2f2f;
+  color: #a3a3a3;
+}
+.section-no-v-paddings{
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.section-no-v-margins{
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* Recent Post Bottom controls */
+.bottom-control-slider{
+  margin-bottom: 44px;
+}
+
+/* Taxonomy list */
+.view-taxonomy .item-list > ul,
+.view-taxonomy .item-list > ul > li,
+.view-taxonomy .links.inline,
+.view-taxonomy .links.inline li{
+  list-style: none;
+  padding-left: 0;
+}
+.view-taxonomy .links.inline {
+  margin-bottom: 40px;
+}
+
+/* Flexnav tablets fix *//*
+@media(min-width: 991px){
+  .nav-child{
+    display: none !important;
+  }
+  .nav-child.open{
+    display: block !important;
+  }
+}*/
+
+.max-width-container{
+  max-width: 1170px;
 }

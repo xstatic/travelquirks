@@ -108,7 +108,7 @@
       endif;
       if(isset($content['field_button_link'])) {
         foreach($content['field_button_link']['#items'] as $i => $item) {
-          print l($item['title'], $item['url'], array('attributes' => array('class' => array('btn', 'btn-default'))));
+          print l($item['title'], $item['url'], array('attributes' => array('target' => '_blank', 'class' => array('btn', 'btn-default'))));
         }
       }
     ?>

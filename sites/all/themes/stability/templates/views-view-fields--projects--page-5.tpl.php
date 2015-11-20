@@ -22,7 +22,8 @@
  *
  * @ingroup views_templates
  */
-$path = isset($row->field_field_images[0]) ? $row->field_field_images[0]['raw']['uri'] : '';
+$image = _get_node_field($row, 'field_field_images');
+$path = isset($image[0]) ? $image[0]['raw']['uri'] : '';
 ?>
 <div class="project-item row">
   <div class="col-md-4 col-md-offset-1">

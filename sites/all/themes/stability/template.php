@@ -23,8 +23,9 @@ function _get_node_field($node, $field, $lang = 'en') {
  * Implementation of hook_preprocess_html().
  */
 function stability_preprocess_html(&$variables) {
-  drupal_add_css('http://fonts.googleapis.com/css?family=Anton|Muli:300,400,400italic,300italic|Goudy+Bookletter+1911|Oswald&subset=latin,latin-ext', array('type' => 'external'));
-  if($_GET['q'] == 'home/one-page') {
+  drupal_add_css('//fonts.googleapis.com/css?family=Anton|Muli:300,400,400italic,300italic|Goudy+Bookletter+1911|Oswald&subset=latin,latin-ext', array('type' => 'external'));
+  drupal_add_css('//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css', array('type' => 'external'));
+  if($_GET['q'] == 'home/one-page' || variable_get('site_frontpage', '') == 'home/one-page') {
     $variables['classes_array'][] = 'one-page';
     $variables['attributes_array']['data-target'] = '.header';
     $variables['attributes_array']['data-spy'] = 'scroll';
@@ -145,7 +146,7 @@ function stability_breadcrumb($variables) {
 
     if (!drupal_is_front_page() && !empty($breadcrumb)) {
       $node_title = filter_xss(menu_get_active_title(), array());
-      $breadcrumb[] = $node_title;
+      $breadcrumb[] = t($node_title);
     }
     if (count($breadcrumb) == 1) {
       $breadcrumb = array();
@@ -196,7 +197,7 @@ function stability_status_messages($variables) {
  * Overrides theme_item_list().
  */
 function stability_item_list($vars) {
-  if (isset($vars['attributes']['class']) && in_array('pager', $vars['attributes']['class'])) {
+  if (isset($vars['attributes']['class']) && is_array($vars['attributes']['class']) && in_array('pager', $vars['attributes']['class'])) {
     foreach($vars['items'] as $i => $item) {
       if(in_array('pager-first', $item['class']) || in_array('pager-last', $item['class'])) {
         $vars['items'][$i]['class'][] = 'hidden-pager';
@@ -206,7 +207,7 @@ function stability_item_list($vars) {
       }
     }
     if(array_search('pager-load-more', $vars['attributes']['class']) === FALSE && ($default_class = array_search('pager', $vars['attributes']['class'])) !== FALSE) {
-      unset($vars['attributes']['class'][$default_class]);
+      //unset($vars['attributes']['class'][$default_class]);
     }
     $styles = array(1 => 'pagination-custom list-unstyled list-inline', 2 => 'pagination pagination-lg', 3 => 'pagination', 4 => 'pagination pagination-sm');
     $vars['attributes']['class'][] = $styles[theme_get_setting('pager') ? theme_get_setting('pager') : 1];
@@ -269,12 +270,14 @@ function stability_pager_link($variables) {
 
 function stability_field($variables) {
   $output = '';
+  $field_output = array();
   if (!$variables['label_hidden']) {
     $output .= '<div class="field-label"' . $variables['title_attributes'] . '>' . $variables['label'] . ':&nbsp;</div>';
   }
   foreach ($variables['items'] as $delta => $item) {
-    $output .= drupal_render($item);
+    $field_output[] = drupal_render($item);
   }
+  $output .= implode(', ', $field_output);
   return $output;
 }
 

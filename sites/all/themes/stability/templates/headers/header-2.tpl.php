@@ -29,7 +29,7 @@
 
         <!-- Banner -->
         <div class="head-banner">
-          <a href="/contact"><img src="<?php print base_path() . path_to_theme(); ?>/images/banner.jpg" alt=""></a>
+          <a href="<?php print theme_get_setting('header_2_link'); ?>"><img src="<?php print base_path() . path_to_theme(); ?>/images/banner.jpg" alt=""></a>
         </div>
         <!-- Banner / End -->
     </div>

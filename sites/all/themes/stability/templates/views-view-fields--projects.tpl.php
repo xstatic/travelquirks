@@ -26,7 +26,7 @@ global $projects_categories;
 $categories = array();
 if($fields['field_categories']->content) {
   foreach(explode(' / ', $fields['field_categories']->content) as $category) {
-  	$category_id = preg_replace('/[^a-zA-Z0-9\']/', '-', $category);
+  	$category_id = preg_replace('/[^\p{L}]/u', '-', $category);
   	$projects_categories[$category_id] = $category;
   	$categories[] = $category_id;
   }
@@ -34,7 +34,8 @@ if($fields['field_categories']->content) {
 $columns_classes = array(3 => 4, 4 => 3, 2 => 6, 6 => 2);
 $cols = $view->style_options['columns'];
 $bootsrap_class = $columns_classes[$cols];
-$path = isset($row->field_field_images[0]) ? $row->field_field_images[0]['raw']['uri'] : '';
+$image = _get_node_field($row, 'field_field_images');
+$path = isset($image[0]) ? $image[0]['raw']['uri'] : '';
 ?>
 <div class = "col-sm-6 col-md-<?php print $bootsrap_class; ?> project-item isotope-item <?php print implode(' ', $categories); ?>">
 	<div class="project-item-inner">

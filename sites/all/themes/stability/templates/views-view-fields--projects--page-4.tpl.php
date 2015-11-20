@@ -25,11 +25,12 @@
 global $projects_categories;
 $categories = array();
 foreach(explode(' / ', $fields['field_categories']->content) as $category) {
-	$category_id = preg_replace('/[^a-zA-Z0-9\']/', '-', $category);
+  $category_id = preg_replace('/[^\p{L}]/u', '-', $category);
 	$projects_categories[$category_id] = $category;
 	$categories[] = $category_id;
 }
-$path = isset($row->field_field_images[0]) ? $row->field_field_images[0]['raw']['uri'] : '';
+$image = _get_node_field($row, 'field_field_images');
+$path = isset($image[0]) ? $image[0]['raw']['uri'] : '';
 ?>
 <div class = "project-item isotope-item <?php print implode(' ', $categories); ?>">
 	<div class = "project-item-inner">

@@ -22,19 +22,20 @@
  *
  * @ingroup views_templates
  */
-$path = isset($row->field_field_images[0]) ? $row->field_field_images[0]['raw']['uri'] : '';
+$image = _get_node_field($row, 'field_field_images');
+$path = isset($image[0]) ? $image[0]['raw']['uri'] : '';
 ?>
 <div class="project-item">
 	<div class="project-item-inner">
 		<figure class="alignnone project-img">
 			<?php print $fields['field_images']->content; ?>
 			<div class="overlay">
-				<a href="<?php print url('node/' . $fields['nid']->content); ?>" class="dlink"><i class="fa fa-link"></i></a>
+				<a href="<?php print url('node/' . strip_tags($fields['nid']->content)); ?>" class="dlink"><i class="fa fa-link"></i></a>
 				<a href="<?php print file_create_url($path);?>" class="popup-link zoom"><i class="fa fa-search-plus"></i></a>
 			</div>
 		</figure>
 		<div class="project-desc">
-			<h4 class="title"><a href="<?php print url($fields['nid']->content); ?>"><?php print $fields['title']->content; ?></a></h4>
+			<h4 class="title"><?php print $fields['title']->content; ?></h4>
 			<span class="desc"><?php print $fields['field_categories']->content; ?></span>
 		</div>
 	</div>
