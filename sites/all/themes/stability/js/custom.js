@@ -15,6 +15,10 @@
     7. FitVid (responsive video)
     -- Misc
     8. Sticky Header
+    9. Shape Boxes
+    10. SelfHosted Audio & Video
+    11. Parallax Background
+    12. Circle Counter
 */
 
 jQuery(function($){
@@ -48,8 +52,8 @@ jQuery(function($){
 
         $(window).smartresize(function(){
             $container.isotope({
-                filter              : '*',
-                resizable           : true,
+                filter              : $('.project-feed-fiter .btn-primary').attr('data-filter'),
+                resizable           : false,
                 layoutMode: 'sloppyMasonry',
                 itemSelector: '.project-item'
             });
@@ -125,11 +129,11 @@ jQuery(function($){
     });
 
     // Custom Navigation Events
-    $("#carousel-next").click(function(){
-        owl.trigger('owl.next');
+    $(".prev-next-holder .next-btn").click(function(){
+      $(this).parent().parent().find('.owl-carousel').trigger('owl.next');
     });
-    $("#carousel-prev").click(function(){
-        owl.trigger('owl.prev');
+    $(".prev-next-holder .prev-btn").click(function(){
+      $(this).parent().parent().find('.owl-carousel').trigger('owl.prev');
     });
 
     // carousel with 3 elements
@@ -162,6 +166,7 @@ jQuery(function($){
             owl_slider(context);
         }
     };
+
     function owl_slider(context) {
         $(".owl-slider", context).owlCarousel({
             navigation : true, // Show next and prev buttons
@@ -183,9 +188,11 @@ jQuery(function($){
           video_fit(context);
         }
     };
+
     function video_fit(context) {
-        $(".video-holder", context).fitVids();
+      $(".video-holder", context).fitVids();
     }
+
     video_fit($(document));
 
     /* ----------------------------------------------------------- */
@@ -349,8 +356,10 @@ jQuery(function($){
         } );
     }
 
-    init();
-
+    // only run init function for non-touch devices
+    if (!Modernizr.touch) {
+      init();
+    }
 
     /* ----------------------------------------------------------- */
     /*  10. SelfHosted Audio & Video
@@ -391,7 +400,7 @@ jQuery(function($){
     // Parallax Background
     $(window).load(function () {
 
-        if($(".parallax-bg").get(0) && $(window).width() > 991) {
+        if($(".parallax-bg, .fwb-parallax").get(0) && $(window).width() > 991) {
             if(!Modernizr.touch) {
                 $(window).stellar({
                     responsive:true,
@@ -402,7 +411,7 @@ jQuery(function($){
                     verticalOffset: 0
                 });
             } else {
-                $(".parallax-bg").addClass("disabled");
+                $(".parallax-bg, .fwb-parallax").addClass("disabled");
             }
         }
     });
@@ -419,5 +428,45 @@ jQuery(function($){
       if(hash) {
         $('a[href="' + hash + '"]').click();
       }
+
+      $('.nav-tabs a').click(function() {
+        var id = $(this).attr('href');
+        setTimeout(function() {
+          
+          $(id).once('fitVids-tabs', function() {
+            $(this).find('.fluid-width-video-wrapper').removeClass('fluid-width-video-wrapper').css('padding-top', 0);
+            video_fit($(this));  
+          });
+          
+        }, 500);
+      });
+
     });
+
+    /* ----------------------------------------------------------- */
+    /*  12. Circle Counter
+    /* ----------------------------------------------------------- */
+
+    $(".circled-counter").each(function() {
+      var $this = $(this);
+      $this.appear(function() {
+        $this.circliful();
+      }, {accX: 0, accY: 100});
+    });
+
+    /* ----------------------------------------------------------- */
+    /*  12. Circle Counter
+    /* ----------------------------------------------------------- */
+    if($('.header').hasClass('header-transparent') || $('.header').hasClass('header-fixed')) {
+      $(window).scroll(function() {    
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 400) {
+            $(".header:not(.headhesive)").addClass("hidden");
+        } else {
+            $(".header:not(.headhesive)").removeClass("hidden");
+        }
+      });
+    };
+
 });

@@ -105,7 +105,7 @@ $icon = isset($icon) ? $icon : true;
 
 	<?php if(in_array($fields['field_blog_type']->content, array('Standart', 'Gallery'))): ?>
 		<footer class="entry-footer">
-			<?php print l('Read More', 'node/' . $fields['nid']->content, array('attributes' => array('class' => array('btn', 'btn-default'))));?>
+			<?php print l(t('Read More'), 'node/' . $fields['nid']->content, array('attributes' => array('class' => array('btn', 'btn-default'))));?>
 		</footer>
 	<?php endif; ?>
 </article>

@@ -36,6 +36,7 @@ settings[toggle_main_menu] = 1
 settings[login_account_links] = 1
 settings[pager] = 1
 settings[header] = 1
+settings[header_2_link] = contact
 settings[sub_header] = 1
 settings[slider_overlay] = 1
 settings[sticky_header] = 1
@@ -56,6 +57,7 @@ settings[working_time] = Monday - Friday 9:00 - 21:00
 settings[gmap_lat] = 40.717599
 settings[gmap_lng] = -74.005136
 settings[gmap_zoom] = 17
+settings[maptypeid] = ROADMAP
 
 settings[skin] = red 
 settings[layout] = wide
@@ -74,6 +76,6 @@ settings[social_links_xing_link] = www.xing.com
 settings[social_links_rss_enabled] = 1
 settings[social_links_rss_link] = www.stability.nikadevs.com
 
-version = "7.x-1.4"
+version = "7.x-1.6"
 core = "7.x"
 project = "stability"

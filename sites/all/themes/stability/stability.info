@@ -12,11 +12,12 @@ regions[help]               = Help
 regions[footer]             = Footer
 
 stylesheets[all][] = css/bootstrap.min.css
-stylesheets[all][] = css/fonts/font-awesome/css/font-awesome.css
+;stylesheets[all][] = css/fonts/font-awesome/css/font-awesome.css
 stylesheets[all][] = vendor/owl-carousel/owl.carousel.css
 stylesheets[all][] = vendor/owl-carousel/owl.theme.css
 stylesheets[all][] = vendor/magnific-popup/magnific-popup.css
 stylesheets[all][] = vendor/mediaelement/mediaelementplayer.css
+stylesheets[all][] = vendor/circliful/css/jquery.circliful.css
 stylesheets[all][] = css/theme.css
 stylesheets[all][] = css/theme-elements.css
 stylesheets[all][] = css/animate.min.css
@@ -37,6 +38,7 @@ scripts[] = vendor/jquery.appear.js
 scripts[] = vendor/jquery.stellar.min.js
 scripts[] = vendor/snap.svg-min.js
 scripts[] = vendor/mediaelement/mediaelement-and-player.min.js
+scripts[] = vendor/circliful/js/jquery.circliful.min.js
 scripts[] = js/custom.js
 
 features[] = name
@@ -60,6 +62,7 @@ settings[toggle_main_menu] = 1
 settings[login_account_links] = 1
 settings[pager] = 1
 settings[header] = 1
+settings[header_2_link] = contact
 settings[sub_header] = 1
 settings[slider_overlay] = 1
 settings[sticky_header] = 1
@@ -80,6 +83,7 @@ settings[working_time] = Monday - Friday 9:00 - 21:00
 settings[gmap_lat] = 40.717599
 settings[gmap_lng] = -74.005136
 settings[gmap_zoom] = 17
+settings[maptypeid] = ROADMAP
 
 settings[skin] = red 
 settings[layout] = wide
@@ -99,6 +103,6 @@ settings[social_links_rss_enabled] = 1
 settings[social_links_rss_link] = www.stability.nikadevs.com
 
 
-version = "7.x-1.4"
+version = "7.x-1.6"
 core = "7.x"
 project = "stability"

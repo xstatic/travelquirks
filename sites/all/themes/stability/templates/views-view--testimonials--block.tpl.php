@@ -39,6 +39,16 @@
     <?php print $rows; ?>
   </div>
 
+  <?php if ($more): ?>
+    <?php print $more; ?>
+  <?php endif; ?>
+
+  <?php if ($footer): ?>
+    <div class="view-footer">
+      <?php print $footer; ?>
+    </div>
+  <?php endif; ?>
+
   <?php if ($feed_icon): ?>
     <div class="feed-icon">
       <?php print $feed_icon; ?>

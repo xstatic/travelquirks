@@ -92,7 +92,6 @@
 }
 
 /* Hide extra setting */
-.one_page_view-wrap,
-.background-tab-setting{
+.one_page_view-wrap{
   display: none !important;
 }

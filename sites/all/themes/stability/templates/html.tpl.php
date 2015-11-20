@@ -16,10 +16,10 @@
   <?php print $styles; ?>
 
 	<!-- Head Libs -->
-	<script src="<?php print base_path() . path_to_theme(); ?>/vendor/modernizr.js"></script>
+	<script src="<?php print base_path() . drupal_get_path('theme', 'stability'); ?>/vendor/modernizr.js"></script>
 
 	<!--[if lt IE 9]>
-		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<script src="<?php print base_path() . drupal_get_path('theme', 'stability'); ?>/vendor/respond.min.js"></script>
 	<![endif]-->
 
@@ -39,9 +39,9 @@
 
   <?php print $page_top; ?>
   <?php print $page; ?>
+  <?php print $scripts; ?>
   <?php print $page_bottom; ?>
 
-  <?php print $scripts; ?>
 
   <?php if(strpos($_SERVER['HTTP_HOST'], 'nikadevs') !== FALSE): ?>
     <link rel="stylesheet" href="<?php print base_path() . drupal_get_path('theme', 'stability'); ?>/css/skins/red.css">

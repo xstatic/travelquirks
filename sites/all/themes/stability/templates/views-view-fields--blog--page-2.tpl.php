@@ -35,7 +35,7 @@ $entry_meta = '
 	<span class="entry-author">' . t('by') . ' ' . '<a href="#">' . $fields['name']->content . '</a></span>
 </div>';
 $footer = in_array($fields['field_blog_type']->content, array('Standart', 'Gallery')) ? 
-	'<footer class="entry-footer">'. l('Read More', 'node/' . $fields['nid']->content, array('attributes' => array('class' => array('btn', 'btn-default')))) . '</footer>' : '';
+	'<footer class="entry-footer">'. l(t('Read More'), 'node/' . $fields['nid']->content, array('attributes' => array('class' => array('btn', 'btn-default')))) . '</footer>' : '';
 // If standart post without image - mark it as Standart no Image
 $type = $fields['field_blog_type']->content == 'Standart' && empty($images) ? 'Standart no Image' : $fields['field_blog_type']->content;
 ?>

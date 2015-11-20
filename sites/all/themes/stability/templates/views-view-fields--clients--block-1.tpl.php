@@ -28,7 +28,7 @@ global $clients_block_delay;
 ?>
 
 <div class="text-center" data-animation = "fadeInDown" data-animation-delay = "<?php print $clients_block_delay; ?>">
-	<a href="<?php print url($fields['field_link']->content); ?>"><?php print $fields['field_image']->content; ?></a>
+	<a href="<?php print isset($fields['field_link']) ? url($fields['field_link']->content) : '#'; ?>"><?php print $fields['field_image']->content; ?></a>
 </div>
 
 <?php $clients_block_delay += 200;

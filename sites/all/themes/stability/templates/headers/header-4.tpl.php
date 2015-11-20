@@ -5,7 +5,7 @@
 
       <div class="header-top-left">
         <span class="info-item"><i class="fa fa-phone"></i><?php print theme_get_setting('phones'); ?></span>
-        <span class="info-item"><i class="fa fa-envelope"></i> <a href="<?php print theme_get_setting('email'); ?>"><?php print theme_get_setting('email'); ?></a></span>
+        <span class="info-item"><i class="fa fa-envelope"></i> <a href="mailto:<?php print theme_get_setting('email'); ?>"><?php print theme_get_setting('email'); ?></a></span>
       </div>
       <div class="header-top-right">
         <?php print $login_account_links; ?>

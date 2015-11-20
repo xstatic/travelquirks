@@ -74,7 +74,7 @@
  * @see template_process()
  */
 ?>
-<?php if($content['field_hide_title'][0]['#markup'] != 'Hide'): ?>
+<?php if(isset($content['field_hide_title'][0]['#markup']) && $content['field_hide_title'][0]['#markup'] != 'Hide'): ?>
   <div class="title-accent">
     <h3><?php print _stability_cms_block_title($title); ?></h3>
   </div>
@@ -87,7 +87,7 @@
   hide($content['field_image']);
 ?>
 
-<?php if($content['field_page_type'][0]['#markup'] == 'Two Columns with Image'): ?>
+<?php if(isset($content['field_page_type'][0]['#markup']) && $content['field_page_type'][0]['#markup'] == 'Two Columns with Image'): ?>
   <div class="row">
     <div class="col-md-6">
       <figure class="alignnone">

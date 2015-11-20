@@ -141,22 +141,22 @@
                   <span class="social-links-txt"><?php print t('Connect with us'); ?></span>
                   <ul class="social-links">
                     <?php if (theme_get_setting('social_links_facebook_enabled')): ?>
-                      <li><a href="http://<?php print theme_get_setting('social_links_facebook_link'); ?>" ><i class="fa fa-facebook"></i></a></li>
+                      <li><a href="//<?php print theme_get_setting('social_links_facebook_link'); ?>" ><i class="fa fa-facebook"></i></a></li>
                     <?php endif; ?>
                     <?php if (theme_get_setting('social_links_twitter_enabled')): ?>
-                      <li><a href="http://<?php print theme_get_setting('social_links_twitter_link'); ?>"><i class="fa fa-twitter"></i></a></li>
+                      <li><a href="//<?php print theme_get_setting('social_links_twitter_link'); ?>"><i class="fa fa-twitter"></i></a></li>
                     <?php endif; ?>          
                     <?php if (theme_get_setting('social_links_instagram_enabled')): ?>
-                      <li><a href="http://<?php print theme_get_setting('social_links_instagram_link'); ?>"><i class="fa fa-instagram"></i></a></li>
+                      <li><a href="//<?php print theme_get_setting('social_links_instagram_link'); ?>"><i class="fa fa-instagram"></i></a></li>
                     <?php endif; ?>          
                     <?php if (theme_get_setting('social_links_linkedin_enabled')): ?>
-                      <li><a href="http://<?php print theme_get_setting('social_links_linkedin_link'); ?>"><i class="fa fa-linkedin"></i></a></li>
+                      <li><a href="//<?php print theme_get_setting('social_links_linkedin_link'); ?>"><i class="fa fa-linkedin"></i></a></li>
                     <?php endif; ?>
                     <?php if (theme_get_setting('social_links_xing_enabled')): ?>
-                      <li><a href="http://<?php print theme_get_setting('social_links_xing_link'); ?>"><i class="fa fa-xing"></i></a></li>
+                      <li><a href="//<?php print theme_get_setting('social_links_xing_link'); ?>"><i class="fa fa-xing"></i></a></li>
                     <?php endif; ?>
                     <?php if (theme_get_setting('social_links_rss_enabled')): ?>
-                      <li><a href="http://<?php print theme_get_setting('social_links_rss_link'); ?>" ><i class="fa fa-rss"></i></a></li>
+                      <li><a href="//<?php print theme_get_setting('social_links_rss_link'); ?>" ><i class="fa fa-rss"></i></a></li>
                     <?php endif; ?>
                   </ul>
                 </div>

@@ -67,6 +67,16 @@ function stability_form_system_theme_settings_alter(&$form, &$form_state) {
     '#options' => array(1 => 1, 2 => 2, 3 => 3, 4 => 4, 5 => 5, 6 => 6),
     '#default_value' => theme_get_setting('header'),
   );
+  $form['options']['main']['header_2_link'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Banner Link'),
+    '#default_value' => theme_get_setting('header_2_link'),
+    '#states' => array(
+      'visible' => array(
+        ':input[name="header"]' => array('value' => 2),
+      ),
+    ),
+  );
   $form['options']['main']['sub_header'] = array(
     '#type' => 'select',
     '#title' => t('Page Header Version'),
@@ -200,6 +210,13 @@ function stability_form_system_theme_settings_alter(&$form, &$form_state) {
     '#title' => t('Google Map Zoom'),
     '#default_value' => theme_get_setting('gmap_zoom'),
     '#size' => 6
+  );
+  $options = array('HYBRID', 'ROADMAP', 'SATELLITE', 'TERRAIN');
+  $form['options']['gmap']['maptypeid'] = array(
+    '#type' => 'select',
+    '#title' => t('Google Map Type'),
+    '#default_value' => theme_get_setting('maptypeid'),
+    '#options' => array_combine($options, $options)
   );
 
   $form['options']['color'] = array(

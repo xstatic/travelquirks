@@ -63,22 +63,30 @@
  * @see template_preprocess_page()
  * @see template_process()
  */
-$page['content']['#prefix'] = $messages . render($tabs);
+$messages = $messages ? '<div class = "container-fluid max-width-container">' . $messages . '</div>' : '';
+$tabs = render($tabs);
+$tabs = $tabs ? '<div class = "container-fluid max-width-container">' . $tabs . '</div>' : '';
+$page['content']['#prefix'] = $messages . $tabs;
 ?>
 
 <div class="site-wrapper">
   
   <?php
     $header_version = arg(0) == 'home' && arg(1) == 'header' ? arg(2) : theme_get_setting('header');
-    include "headers/header-{$header_version}.tpl.php";
+    $file_name = "headers/header-{$header_version}.tpl.php";
+    $sub_theme = drupal_get_path('theme', 'stability_sub');
+    $template = file_exists($sub_theme . '/stability_sub/templates/' . $file_name) ? $sub_theme . '/stability_sub/templates/' . $file_name : $file_name;
+    include $template;
   ?>
 
   <div class="main" role="main">
 
     <?php 
-      if(!$is_front && arg(0) != 'home') {
+        if(!$is_front && strpos(request_uri(), 'home') === FALSE) {
         $sub_header_version = arg(2) == 'sub-header' ? arg(3) : theme_get_setting('sub_header');
-        include 'sub-headers/sub-header-' . ($sub_header_version ? $sub_header_version : 1) . '.tpl.php';
+        $file_name = 'sub-headers/sub-header-' . ($sub_header_version ? $sub_header_version : 1) . '.tpl.php';
+        $template = file_exists($sub_theme . '/stability_sub/templates/' . $file_name) ? $sub_theme . '/stability_sub/templates/' . $file_name : $file_name;
+        include $template;
       } ?>
 
     <?php
@@ -124,22 +132,22 @@ $page['content']['#prefix'] = $messages . render($tabs);
               <span class="social-links-txt"><?php print theme_get_setting('connect_us'); ?></span>
               <ul class="social-links social-links__dark">
                 <?php if (theme_get_setting('social_links_facebook_enabled')): ?>
-                  <li><a href="http://<?php print theme_get_setting('social_links_facebook_link'); ?>" ><i class="fa fa-facebook"></i></a></li>
+                  <li><a href="//<?php print theme_get_setting('social_links_facebook_link'); ?>" ><i class="fa fa-facebook"></i></a></li>
                 <?php endif; ?>
                 <?php if (theme_get_setting('social_links_twitter_enabled')): ?>
-                  <li><a href="http://<?php print theme_get_setting('social_links_twitter_link'); ?>"><i class="fa fa-twitter"></i></a></li>
+                  <li><a href="//<?php print theme_get_setting('social_links_twitter_link'); ?>"><i class="fa fa-twitter"></i></a></li>
                 <?php endif; ?>          
                 <?php if (theme_get_setting('social_links_instagram_enabled')): ?>
-                  <li><a href="http://<?php print theme_get_setting('social_links_instagram_link'); ?>"><i class="fa fa-instagram"></i></a></li>
+                  <li><a href="//<?php print theme_get_setting('social_links_instagram_link'); ?>"><i class="fa fa-instagram"></i></a></li>
                 <?php endif; ?>          
                 <?php if (theme_get_setting('social_links_linkedin_enabled')): ?>
-                  <li><a href="http://<?php print theme_get_setting('social_links_linkedin_link'); ?>"><i class="fa fa-linkedin"></i></a></li>
+                  <li><a href="//<?php print theme_get_setting('social_links_linkedin_link'); ?>"><i class="fa fa-linkedin"></i></a></li>
                 <?php endif; ?>
                 <?php if (theme_get_setting('social_links_xing_enabled')): ?>
-                  <li><a href="http://<?php print theme_get_setting('social_links_xing_link'); ?>"><i class="fa fa-xing"></i></a></li>
+                  <li><a href="//<?php print theme_get_setting('social_links_xing_link'); ?>"><i class="fa fa-xing"></i></a></li>
                 <?php endif; ?>
                 <?php if (theme_get_setting('social_links_rss_enabled')): ?>
-                  <li><a href="http://<?php print theme_get_setting('social_links_rss_link'); ?>" ><i class="fa fa-rss"></i></a></li>
+                  <li><a href="//<?php print theme_get_setting('social_links_rss_link'); ?>" ><i class="fa fa-rss"></i></a></li>
                 <?php endif; ?>
               </ul>
             </div>
